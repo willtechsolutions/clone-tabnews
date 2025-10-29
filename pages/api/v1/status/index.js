@@ -1,6 +1,9 @@
-function status(request, response) {
-  response
-    .status(200)
-    .json({ chave: "viva cada dia como se fosse o ultimo dia" });
+import database from "../../../../infra/database.js";
+
+async function status(request, response) {
+  const result = await database.query("SELECT 1 + 1;");
+  console.log(result);
+  response.status(200).json({ chave: "são acima da média as sum: 2" });
 }
+
 export default status;
